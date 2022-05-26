@@ -28,7 +28,7 @@ class DriverController extends Controller
         ->phone($telefono)
         ->address($direccion)
         ->pass($pase)
-        ->paginate(5);
+        ->paginate(10);
 
 
         return view($this->path . 'index')->with('drivers',$drivers);

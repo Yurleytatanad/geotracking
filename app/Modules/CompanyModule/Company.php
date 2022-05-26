@@ -34,13 +34,13 @@ class Company extends Model
         return Validator::make(
             $request->all(),
             [
-                'name'            => 'nullable|required',
-                'nit'             => 'nullable|required',
-                'address'         => 'nullable|required',
-                'contact_person'  => 'nullable|required',
-                'phone'           => 'nullable|required',
+                'name'            => 'nullable|required|min:7',
+                'nit'             => 'nullable|required|min:8',
+                'address'         => 'nullable|required|min:9',
+                'contact_person'  => 'nullable|required|min:6',
+                'phone'           => 'nullable|required|min:10 ',
                 'logo'            => 'nullable',
-                'mail'            => 'nullable|required',
+                'mail'            => 'nullable|required|min:7',
                 'password'        => 'nullable'
             ]
         );

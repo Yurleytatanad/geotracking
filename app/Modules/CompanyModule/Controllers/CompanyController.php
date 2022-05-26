@@ -8,7 +8,7 @@ use App\Modules\CompanyModule\Company as CompanyModuleCompany;
 use Faker\Provider\ar_EG\Company as Ar_EGCompany;
 use Illuminate\Http\Request;
 
-
+use PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting\Wizard\Errors;
 
 class CompanyController extends Controller
 {
@@ -21,21 +21,21 @@ class CompanyController extends Controller
 
         $nombre           = $request->get('name');
         $nit              = $request->get('nit');
-        $direccion        = $request->get('address'); 
+        $direccion        = $request->get('address');
         $persona_contacto = $request->get('contact_person');
-        $telefono         = $request->get('phone'); 
-        $email            = $request->get('mail'); 
+        $telefono         = $request->get('phone');
+        $email            = $request->get('mail');
 
-      
-        $companys = company::name($nombre) 
-        ->nit($nit)
-        ->adrdress($direccion)
-        ->contact_person($persona_contacto)
-        ->phone($telefono) 
-        ->mail($email)
-        ->paginate(5);
 
-        return view($this->path . 'index')->with('companys',$companys);
+        $companys = company::name($nombre)
+            ->nit($nit)
+            ->adrdress($direccion)
+            ->contact_person($persona_contacto)
+            ->phone($telefono)
+            ->mail($email)
+            ->paginate(10);
+
+        return view($this->path . 'index')->with('companys', $companys);
 
         // $respuesta['companys'] = Company::all();
         // return view($this->path . 'index')->with('data', $respuesta);
@@ -52,16 +52,25 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $datos = new Company();
+   
+        // $respuesta = Company::all();
+        // $response = $datos->saveCompany($request);
 
-        // if ($request->hasFile('logo')) {
-        //     $company['logo'] = $request->file('Foto')->store('', 'public');
+        // if ($response['status'] = 200){
+        //     dd($response);
         // }
-
         $datos->saveCompany($request);
-        $respuesta = Company::all();
-        // return view($this->path . 'index', ['data' => $respuesta]);
+        $valor = $datos->validateCompany($request);
+        
+        if ($valor->fails()) {
+            // return redirect()->back()->with('danger', $valor->errors());
+            session()->flash('danger', $valor->errors());
+            return redirect()->back()->withInput();
+        }else{
+            return redirect()->back()->with('create', 'Empresa creada con exito');
+        }
 
-        return redirect()->back()->with('create', 'Empresa creada con exito');
+        // return view($this->path . 'index', ['data' => $respuesta]);
     }
 
 

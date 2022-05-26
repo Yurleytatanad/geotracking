@@ -17,42 +17,45 @@
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Nombre Empresa*</label>
-                                    <input type="text" name="name" class="form-control" style=" border-radius: 50px"
-                                        required>
+                                    <label class="form-control-label" for="input-name">Nombre Empresa*</label>
+                                    <input type="text" name="name" id="input-name" class="form-control"
+                                        value="{{ old('name') }}" style=" border-radius: 50px" required>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Nit *</label>
-                                    <input type="text" name="nit" class="form-control" style=" border-radius: 50px"
-                                        required>
+                                    <label class="form-control-label" for="input-nit">Nit *</label>
+                                    <input type="text" name="nit" id="input-nit" class="form-control"
+                                        style=" border-radius: 50px" value="{{ old('nit') }}" required>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Direccion *</label>
-                                    <input type="text" name="address" class="form-control" style=" border-radius: 50px"
-                                        required>
+                                    <label class="form-control-label" for="input-address">Direccion *</label>
+                                    <input type="text" name="address" id="input-address" class="form-control"
+                                        style=" border-radius: 50px" value="{{ old('address') }}" required>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Persona de Contacto *</label>
-                                    <input type="text" name="contact_person" class="form-control"
-                                        style=" border-radius: 50px" required>
+                                    <label class="form-control-label" for="input-contact_person">Persona de Contacto
+                                        *</label>
+                                    <input type="text" name="contact_person" id="input-contact_person"
+                                        class="form-control" style=" border-radius: 50px"
+                                        value="{{ old('contact_person') }}" required>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Telefono *</label>
-                                    <input type="text" name="phone" class="form-control" style=" border-radius: 50px"
-                                        required>
+                                    <label class="form-control-label" for="input-phone">Telefono *</label>
+                                    <input type="text" name="phone" id="input-phone" value="{{ old('phone') }}"
+                                        class="form-control" style=" border-radius: 50px" required>
                                 </div>
                                 <div class=" col-md-6 col-sm-12">
                                     <label class="form-control-label">Logo *</label>
-                                    <input type="file" name="logo" class="form-control-file" required>
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Correo Electronico *</label>
-                                    <input type="text" name="mail" class="form-control" style=" border-radius: 50px"
+                                    <input type="file" name="logo" class="form-control-file" value="{{ old('logo') }}"
                                         required>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label">Contraseña *</label>
-                                    <input type="password" name="password" class="form-control"
+                                    <label class="form-control-label" for="input-mail">Correo Electronico *</label>
+                                    <input type="email" name="mail" id="input-mail" class="form-control"
+                                        style=" border-radius: 50px" value="{{ old('mail') }}" required>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label class="form-control-label" for="input-password">Contraseña *</label>
+                                    <input type="password" name="password" id="input-password" class="form-control"
                                         style=" border-radius: 50px" required>
                                 </div>
                             </div>
