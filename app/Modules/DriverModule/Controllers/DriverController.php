@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class DriverController extends Controller
 {
-  
+
 
     protected $path = 'DriverModule.views.html.';
     public $data;
@@ -24,18 +24,13 @@ class DriverController extends Controller
         $pase      = $request->get('pass_number');
 
         $drivers = Driver::name($nombre)
-        ->last_name($apellidos)
-        ->phone($telefono)
-        ->address($direccion)
-        ->pass($pase)
-        ->paginate(10);
+            ->last_name($apellidos)
+            ->phone($telefono)
+            ->address($direccion)
+            ->pass($pase)
+            ->paginate(10);
 
-
-        return view($this->path . 'index')->with('drivers',$drivers);
-
-        // $respuesta = Driver::all();
-        // // return view($this->path . 'index', ['data' => $respuesta]);
-        
+        return view($this->path . 'index')->with('drivers', $drivers);
     }
 
     public function create()
@@ -43,63 +38,43 @@ class DriverController extends Controller
         return view($this->path . 'create');
     }
 
-  
+
     public function store(Request $request)
     {
         $datos = new Driver();
-        $response = $datos->saveDriver($request);
-        $respuesta = Driver::all();
-        // if ($response['status'] = 200){
-        //     dd($response);
-        // }
-    
-        // if ($response['status'] = 200){
-        //     session()->flash('success','Conductor creado con exito');
-        //     return view($this->path . 'index', ['data' => $respuesta]);
-            
-        // }else{
-        //     session()->flash('danger', $response['error']);  
-        //    return view($this->path . 'create', ['data' => $respuesta]);
-        // }
-    //    return view($this->path . 'index', ['data' => $respuesta]);
-    return redirect()->back()->with('create','Conductor creado con exito');
+        $datos->saveDriver($request);
+        return redirect()->back();
     }
 
-  
+
     public function show(Request $request)
     {
-        $consulta = trim($request->get('buscar'));
-        $value = request()->get('buscar');
-        $respuesta= Driver::WhereName($value)->get();
-        return view($this->path . 'show', ['data' => $respuesta, 'buscar' => $consulta]);
+        // $consulta = trim($request->get('buscar'));
+        // $value = request()->get('buscar');
+        // $respuesta = Driver::WhereName($value)->get();
+        // return view($this->path . 'show', ['data' => $respuesta, 'buscar' => $consulta]);
     }
 
 
     public function edit(Driver $driver)
     {
-        return view($this->path . 'edit', compact('driver')); 
+        return view($this->path . 'edit', compact('driver'));
     }
 
 
     public function update(Request $request, $id)
     {
         $datos = new Driver();
-        $datos->updateDriver($request,$id);
-        $respuesta = Driver::all();
+        $datos->updateDriver($request, $id);
 
-        return redirect()->back()->with('update','Conductor actualizado correctamente');
-        // return view($this->path . 'index', ['data' => $respuesta]);
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $driver = new Driver();
         $driver->deleteDriver($id);
-        $respuesta = Driver::all();
 
-        return redirect()->back()->with('delete','Conductor eliminado con exito');
-        // return view($this->path . 'index', ['data' => $respuesta]);
+        return redirect()->back()->with('delete', 'Conductor eliminado con exito');
     }
-
-
 }

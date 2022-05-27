@@ -20,7 +20,7 @@
                                     <label class="form-control-label" for="input-name">Nombre Empresa*</label>
                                     <input type="text" name="name" id="input-name" class="form-control"
                                         value="{{ old('name') }}" style=" border-radius: 50px" required>
-                                        @if ($errors->has('name'))
+                                    @if ($errors->has('name'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
@@ -30,7 +30,7 @@
                                     <label class="form-control-label" for="input-nit">Nit *</label>
                                     <input type="text" name="nit" id="input-nit" class="form-control"
                                         style=" border-radius: 50px" value="{{ old('nit') }}" required>
-                                        @if ($errors->has('nit'))
+                                    @if ($errors->has('nit'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('nit') }}</strong>
                                         </span>
@@ -40,7 +40,7 @@
                                     <label class="form-control-label" for="input-address">Direccion *</label>
                                     <input type="text" name="address" id="input-address" class="form-control"
                                         style=" border-radius: 50px" value="{{ old('address') }}" required>
-                                        @if ($errors->has('address'))
+                                    @if ($errors->has('address'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('address') }}</strong>
                                         </span>
@@ -52,7 +52,7 @@
                                     <input type="text" name="contact_person" id="input-contact_person"
                                         class="form-control" style=" border-radius: 50px"
                                         value="{{ old('contact_person') }}" required>
-                                        @if ($errors->has('contact_person'))
+                                    @if ($errors->has('contact_person'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('contact_person') }}</strong>
                                         </span>
@@ -62,7 +62,7 @@
                                     <label class="form-control-label" for="input-phone">Telefono *</label>
                                     <input type="text" name="phone" id="input-phone" value="{{ old('phone') }}"
                                         class="form-control" style=" border-radius: 50px" required>
-                                        @if ($errors->has('phone'))
+                                    @if ($errors->has('phone'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('phone') }}</strong>
                                         </span>
@@ -77,7 +77,7 @@
                                     <label class="form-control-label" for="input-mail">Correo Electronico *</label>
                                     <input type="email" name="mail" id="input-mail" class="form-control"
                                         style=" border-radius: 50px" value="{{ old('mail') }}" required>
-                                        @if ($errors->has('mail'))
+                                    @if ($errors->has('mail'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('mail') }}</strong>
                                         </span>

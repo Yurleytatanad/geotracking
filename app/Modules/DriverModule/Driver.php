@@ -39,14 +39,14 @@ class Driver extends Model
         return Validator::make(
             $request->all(),
             [
-                'name'        => 'nullable|required',
-                'last_name'   => 'nullable|required',
-                'phone'       => 'nullable|required',
-                'address'     => 'nullable|required',
-                'pass_number' => 'nullable|required',
-                'pass'        => 'nullable',
-                'driver_id'   => 'nullable',
-                'cur_vitae'   => 'nullable',
+                'name'        => 'required|max:30',
+                'last_name'   => 'required|max:30',
+                'phone'       => 'required|min:10',
+                'address'     => 'required|max:50',
+                'pass_number' => 'required|max:15',
+                'pass'        => 'nullable|mimes:doc,pdf',
+                'driver_id'   => 'nullable|mimes:doc,pdf',
+                'cur_vitae'   => 'nullable|mimes:doc,pdf',
             ]
         );
     }
@@ -87,7 +87,8 @@ class Driver extends Model
         $validator = $this->validateDriver($request, 'create');
 
         if ($validator->fails()) {
-            return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+            return redirect()->back()->withInput()->withErrors($validator->errors());  
+            // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
         }
 
         try {
@@ -102,8 +103,8 @@ class Driver extends Model
                 'cur_vitae'    => $request->cur_vitae,
 
             ]);
-
-            return $this->respond(200, $driver, null, 'Conductor creado exitosamente');
+            return redirect()->back()->with('create', 'Conductor creado con exitto', $driver);
+            // return $this->respond(200, $driver, null, 'Conductor creado exitosamente');
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al crear el registro');
         }
@@ -115,8 +116,9 @@ class Driver extends Model
         try {
             $validator = $this->validateDriver($request);
 
-            if ($validator->fails()) { 
-                return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+            if ($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator->errors());
+               // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
             }
 
             $driver = $this::find($id);
@@ -135,8 +137,8 @@ class Driver extends Model
                 'cur_vitae'   => $request->cur_vitae    ?? $driver->cur_vitae,
 
             ]);
-
-            return $this->respond(200, $driver, null, 'Conductor actualizado exitosamente');
+            return redirect()->back()->with('update', 'Conductor actualizada con exitto');
+            // return $this->respond(200, $driver, null, 'Conductor actualizado exitosamente');
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al actualizar el registro');
         }
