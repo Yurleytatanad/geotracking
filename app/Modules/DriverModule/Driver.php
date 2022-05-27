@@ -44,9 +44,9 @@ class Driver extends Model
                 'phone'       => 'required|min:10',
                 'address'     => 'required|max:50',
                 'pass_number' => 'required|max:15',
-                'pass'        => 'nullable|mimes:doc,pdf',
-                'driver_id'   => 'nullable|mimes:doc,pdf',
-                'cur_vitae'   => 'nullable|mimes:doc,pdf',
+                'pass'        => 'nullable',
+                'driver_id'   => 'nullable',
+                'cur_vitae'   => 'nullable',
             ]
         );
     }

@@ -108,7 +108,7 @@
                                     @endforeach 
                                     @else
                                         <tr>
-                                            <th colspan="8" class="text-center">No hay conductores creados</th>
+                                            <th colspan="8" class="text-center">No hay conductores registrados</th>
                                         </tr>
                                     @endif
                                 </tbody>

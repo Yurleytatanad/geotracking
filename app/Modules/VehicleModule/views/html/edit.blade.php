@@ -12,7 +12,7 @@
                         <h5 class="card-title">Editar Vehiculo</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('vehicle.update', $vehicle->id) }}" method="POST">
+                        <form action="{{ route('vehicle.update', $vehicle->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @include('layouts.alerts')

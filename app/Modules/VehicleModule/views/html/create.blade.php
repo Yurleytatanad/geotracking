@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body">
                         @include('layouts.alerts')
-                        <form action="{{ route('vehicle.save') }}" method="POST">
+                        <form action="{{ route('vehicle.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-sm-12">

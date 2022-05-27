@@ -12,7 +12,7 @@
                         <h5 class="card-title">Editar Empresa</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('company.update', $company->id) }}" method="POST">
+                        <form action="{{ route('company.update', $company->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @include('layouts.alerts')
