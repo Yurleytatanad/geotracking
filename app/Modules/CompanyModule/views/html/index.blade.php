@@ -30,7 +30,7 @@
                                             <label for="name">Nombre</label>
                                             <input type="text" name="name" class="form-control"
                                                 placeholder="Escriba nombre" aria-describedby="helpId"
-                                                value="{{ request()->name }}"> 
+                                                value="{{ request()->name }}">
                                             <small id="helpId" class="text-muted">Nombre filtro</small>
                                         </div>
                                         <div class="col-12 col-md-6 form-group">
@@ -93,58 +93,68 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($companys as $company)
-                                        <tr>
-                                            <td>{{ $company->name }} </td>
-                                            <td>{{ $company->nit }}</td>
-                                            <td>{{ $company->address }}</td>
-                                            <td>{{ $company->contact_person }}</td>
-                                            <td>{{ $company->phone }}</td>
-                                            <td>{{ $company->mail }}</td> 
-                                            <td>
-                                                <a href="{{ route('company.edit', $company->id) }}"
-                                                    class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
-                                                    data-bs-toggle="modal" data-bs-id='{{ $company->id }}'
-                                                    data-bs-target="#modal-delete">
-                                                </a>
+                                    @if (count($companys) > 0)
+                                        @foreach ($companys as $company)
+                                            <tr>
+                                                <td>{{ $company->name }} </td>
+                                                <td>{{ $company->nit }}</td>
+                                                <td>{{ $company->address }}</td>
+                                                <td>{{ $company->contact_person }}</td>
+                                                <td>{{ $company->phone }}</td>
+                                                <td>{{ $company->mail }}</td>
+                                                <td>
+                                                    <a href="{{ route('company.edit', $company->id) }}"
+                                                        class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
+                                                    </a>
+                                                    <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
+                                                        data-bs-toggle="modal" data-bs-id='{{ $company->id }}'
+                                                        data-bs-target="#modal-delete">
+                                                    </a>
 
-                                                {{--  <a href=""
+                                                    {{-- <a href=""
                                                     class='eliminar btn btn-danger btn-sm nc-icon nc-simple-remove'>
-                                                </a>  --}}
-                                            </td>
+                                                </a> --}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <th colspan="8" class="text-center">No hay emperesas registrados</th>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
+                            <div class="col-md-12 d-flex aling-items-center justify-content-end">
+                                {{ $companys->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form action="{{ route('company.destroy', $company->id) }}">
-                @csrf
-                @method('DELETE')
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminacion</h5>
-                        <button type="button" class="btn-close btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
-                            aria-label="Close">X</button>
+    @if (isset($company))
+        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="{{ route('company.destroy', $company->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminacion</h5>
+                            <button type="button" class="btn-close btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div class="modal-body">
+                            Desea eliminar el registro de {{ $company->name }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="submit" class=' btn btn-danger' value="Eliminar">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        Desea eliminar el registro de {{ $company->name }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                        <input type="submit" class=' btn btn-danger' value="Eliminar">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    @endif
 @endsection

@@ -85,6 +85,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (count($drivers)>0)
                                     @foreach ($drivers as $driver)
                                         <tr>
                                             <td>{{ $driver->name }} </td>
@@ -104,16 +105,24 @@
                                             class='btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach 
+                                    @else
+                                        <tr>
+                                            <th colspan="8" class="text-center">No hay conductores creados</th>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
+                            <div class="col-md-12 d-flex aling-items-center justify-content-end">
+                                {{$drivers->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+@if (@isset($driver))
     <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form action="{{ route('driver.destroy', $driver->id) }}">
@@ -136,4 +145,5 @@
             </form>
         </div>
     </div>
+    @endif
 @endsection

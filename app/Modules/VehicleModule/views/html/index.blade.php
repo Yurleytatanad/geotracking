@@ -26,13 +26,13 @@
                             <div class="card-body">
                                 <form action="{{ route('vehicle.index') }}" method="get">
                                     <div class="row">
-                                        {{--  <div class="col-12 col-md-6 form-group">
+                                        {{-- <div class="col-12 col-md-6 form-group">
                                             <label for="name">Nombre</label>
                                             <input type="text" name="external_id_driver" class="form-control"
                                                 placeholder="Escriba Nombre del Conductor" aria-describedby="helpId"
                                                 value="{{ request()->external_id_driver }}">
                                             <small id="helpId" class="text-muted">Nombre filtro</small>
-                                        </div>  --}}
+                                        </div> --}}
                                         <div class="col-12 col-md-6 form-group">
                                             <label for="name">Modelo</label>
                                             <input type="tel" name="model" class="form-control"
@@ -42,9 +42,8 @@
                                         </div>
                                         <div class="col-12 col-md-6 form-group">
                                             <label for="name">Año</label>
-                                            <input type="text" name="year" class="form-control"
-                                                placeholder="Escriba año" aria-describedby="helpId"
-                                                value="{{ request()->year }}">
+                                            <input type="text" name="year" class="form-control" placeholder="Escriba año"
+                                                aria-describedby="helpId" value="{{ request()->year }}">
                                             <small id="helpId" class="text-muted">filtro año</small>
                                         </div>
                                         <div class="col-12 col-md-6 form-group">
@@ -102,58 +101,68 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($vehicles as $vehicle)
-                                        <tr>
-                                            <td>{{ $vehicle->driver->name }}</td>
-                                            <td>{{ $vehicle->model }}</td>
-                                            <td>{{ $vehicle->year }}</td>
-                                            <td>{{ $vehicle->register_car }}</td>
-                                            <td>{{ $vehicle->vehicle_id }}</td>
-                                            <td>{{ $vehicle->no_tech_mechanic }}</td>
-                                            <td>{{ $vehicle->no_soat }}</td>
-                                            <td>
-                                                <a href="{{ route('vehicle.edit', $vehicle->id) }}"
-                                                    class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
-                                                    data-bs-toggle="modal" data-bs-id='{{ $vehicle->id }}'
-                                                    data-bs-target="#modal-delete">
-                                                </a>
+                                    @if (count($vehicles) > 0)
+                                        @foreach ($vehicles as $vehicle)
+                                            <tr>
+                                                <td>{{ $vehicle->driver->name }}</td>
+                                                <td>{{ $vehicle->model }}</td>
+                                                <td>{{ $vehicle->year }}</td>
+                                                <td>{{ $vehicle->register_car }}</td>
+                                                <td>{{ $vehicle->vehicle_id }}</td>
+                                                <td>{{ $vehicle->no_tech_mechanic }}</td>
+                                                <td>{{ $vehicle->no_soat }}</td>
+                                                <td>
+                                                    <a href="{{ route('vehicle.edit', $vehicle->id) }}"
+                                                        class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
+                                                    </a>
+                                                    <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
+                                                        data-bs-toggle="modal" data-bs-id='{{ $vehicle->id }}'
+                                                        data-bs-target="#modal-delete">
+                                                    </a>
 
-                                                {{-- <a href="{{ route('vehicle.destroy', $vehicle->id) }}"
+                                                    {{-- <a href="{{ route('vehicle.destroy', $vehicle->id) }}"
                                             class='eliminar btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
-                                            </td>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <th colspan="8" class="text-center">No hay vehiculos registrados</th>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
+                            <div class="col-md-12 d-flex aling-items-center justify-content-end">
+                                {{ $vehicles->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form action="{{ route('vehicle.destroy', $vehicle->id) }}">
-                @csrf
-                @method('DELETE')
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminacion</h5>
-                        <button type="button" class="btn-close btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
-                            aria-label="Close">x</button>
+    @if (isset($vehcles))
+        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="{{ route('vehicle.destroy', $vehicle->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminacion</h5>
+                            <button type="button" class="btn-close btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
+                                aria-label="Close">x</button>
+                        </div>
+                        <div class="modal-body">
+                            Desea eliminar el registro de {{ $vehicle->model }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="submit" class=' btn btn-danger' value="Eliminar">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        Desea eliminar el registro de {{ $vehicle->model }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                        <input type="submit" class=' btn btn-danger' value="Eliminar">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    @endif
 @endsection
