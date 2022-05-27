@@ -52,24 +52,10 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $datos = new Company();
-   
-        // $respuesta = Company::all();
-        // $response = $datos->saveCompany($request);
 
-        // if ($response['status'] = 200){
-        //     dd($response);
-        // }
         $datos->saveCompany($request);
-        $valor = $datos->validateCompany($request);
-        
-        if ($valor->fails()) {
-            // return redirect()->back()->with('danger', $valor->errors());
-            session()->flash('danger', $valor->errors());
-            return redirect()->back()->withInput();
-        }else{
-            return redirect()->back()->with('create', 'Empresa creada con exito');
-        }
 
+        return redirect()->back();
         // return view($this->path . 'index', ['data' => $respuesta]);
     }
 

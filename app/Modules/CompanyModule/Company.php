@@ -34,13 +34,13 @@ class Company extends Model
         return Validator::make(
             $request->all(),
             [
-                'name'            => 'nullable|required|min:7',
-                'nit'             => 'nullable|required|min:8',
-                'address'         => 'nullable|required|min:9',
-                'contact_person'  => 'nullable|required|min:6',
-                'phone'           => 'nullable|required|min:10 ',
+                'name'            => 'required|min:7',
+                'nit'             => 'required|min:8',
+                'address'         => 'required|min:9',
+                'contact_person'  => 'required|min:6',
+                'phone'           => 'required|min:10 ',
                 'logo'            => 'nullable',
-                'mail'            => 'nullable|required|min:7',
+                'mail'            => 'required|min:15',
                 'password'        => 'nullable'
             ]
         );
@@ -88,10 +88,10 @@ class Company extends Model
         $validator = $this->validateCompany($request, 'create');
 
         if ($validator->fails()) {
-            return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+            return redirect()->back()->withInput()->withErrors($validator->errors());   
+            // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
         }
         
-
         try {
             $company = $this::create([
                 'name'              => $request->name,
@@ -105,7 +105,8 @@ class Company extends Model
 
             ]);
             
-            return $this->respond(200, $company, null, 'Empresa creada exitosamente');
+            //return $this->respond(200, $company, null, 'Empresa creada exitosamente');
+             return redirect()->back()->with('create', 'Empresa creada con exitto', $company);
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al crear el registro');
         }
