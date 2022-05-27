@@ -26,8 +26,6 @@
                         <a class="nav-link" href="index.html">
                             <span>{{$driver->name}}</span></a>
                     </td>
-                   
-                    {{--  <td><i class="nc-icon nc-bulb-63"></i></td>  --}}
                 </tr>
             </table>
             <hr class="sidebar-divider">
