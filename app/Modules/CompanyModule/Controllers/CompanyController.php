@@ -26,7 +26,6 @@ class CompanyController extends Controller
         $telefono         = $request->get('phone');
         $email            = $request->get('mail');
 
-
         $companys = company::name($nombre)
             ->nit($nit)
             ->adrdress($direccion)
@@ -41,22 +40,17 @@ class CompanyController extends Controller
         // return view($this->path . 'index')->with('data', $respuesta);
     }
 
-
     public function create()
     {
         $respuesta = Company::all();
         return view($this->path . 'create')->with('data', $respuesta);
     }
 
-
     public function store(Request $request)
     {
         $datos = new Company();
-
         $datos->saveCompany($request);
-
         return redirect()->back();
-        // return view($this->path . 'index', ['data' => $respuesta]);
     }
 
 
@@ -69,33 +63,23 @@ class CompanyController extends Controller
 
     }
 
-
     public function edit(Company $company)
     {
         $respuesta = Company::all();
         return view($this->path . 'edit', compact('company'))->with('data', $respuesta);
     }
 
-
     public function update(Request $request, $id)
     {
         $datos = new Company();
         $datos->updateCompany($request, $id);
-        $respuesta = Company::all();
-        // $response = $datos->updateCompany($request, $id);
-        // if ($response['status'] = 200){
-        //     dd($response);
-        // }
-        return redirect()->back()->with('update', 'Empresa actualiza correctamente');
-        // return view($this->path . 'index', ['data' => $respuesta]);
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $datos = new Company();
         $datos->deleteCompany($id);
-        $respuesta = Company::all();
-        // return view($this->path . 'index', ['data' => $respuesta]);
         return redirect()->back()->with('delete', 'Empresa eliminada con exito');
     }
 }

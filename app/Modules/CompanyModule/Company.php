@@ -34,13 +34,13 @@ class Company extends Model
         return Validator::make(
             $request->all(),
             [
-                'name'            => 'required|min:7',
-                'nit'             => 'required|min:8',
-                'address'         => 'required|min:9',
-                'contact_person'  => 'required|min:6',
+                'name'            => 'required|max:50',
+                'nit'             => 'required|min:9',
+                'address'         => 'required|max:30',
+                'contact_person'  => 'required|max:30',
                 'phone'           => 'required|min:10 ',
                 'logo'            => 'nullable',
-                'mail'            => 'required|min:15',
+                'mail'            => 'required|max:25',
                 'password'        => 'nullable'
             ]
         );
@@ -119,7 +119,8 @@ class Company extends Model
             $validator = $this->validateCompany($request);
 
             if ($validator->fails()) { 
-                return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+                return redirect()->back()->withInput()->withErrors($validator->errors());   
+                // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
             }
 
             $company = $this::find($id);
@@ -136,8 +137,8 @@ class Company extends Model
                 'logo'              => $request->logo           ?? $company->logo,
                 'mail'              => $request->mail           ?? $company->mail,
             ]);
-
-            return $this->respond(200, $company, null, 'Empresa actualizada exitosamente');
+            return redirect()->back()->with('create', 'Empresa actualizada con exitto', $company);
+            // return $this->respond(200, $company, null, 'Empresa actualizada exitosamente');
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al actualizar el registro');
         }
