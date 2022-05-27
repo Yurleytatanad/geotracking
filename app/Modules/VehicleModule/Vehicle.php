@@ -45,18 +45,18 @@ class Vehicle extends Model
         return Validator::make(
             $request->all(),
             [
-                'external_id_driver' => 'nullable|required',
-                'model'              => 'nullable|required',
-                'year'               => 'nullable|required',
-                'register_car'       => 'nullable|required', //maticula
-                'vehicle_id'         => 'nullable|required', //placa
-                'doc_driver_id'      => 'nullable|required',
-                'no_tech_mechanic'   => 'nullable|required',
-                'no_soat'            => 'nullable|required',
-                'doc_card_driver'    => 'nullable',
-                'doc_tech_mechanic'  => 'nullable',
-                'doc_soat'           => 'nullable',
-                'expiration_date'    => 'nullable|required'
+                'external_id_driver' => 'required',
+                'model'              => 'required|max:20',
+                'year'               => 'required|min:4',
+                'register_car'       => 'required|max:15', //maticula
+                'vehicle_id'         => 'required|max:10', //placa
+                'doc_driver_id'      => 'required|max:15',
+                'no_tech_mechanic'   => 'required|max:15',
+                'no_soat'            => 'required|max:15',
+                'doc_card_driver'    => 'nullable|required',
+                'doc_tech_mechanic'  => 'nullable|required',
+                'doc_soat'           => 'nullable|required',
+                'expiration_date'    => 'required'
 
             ]
         );
@@ -111,7 +111,8 @@ class Vehicle extends Model
         $validator = $this->validateVehicle($request, 'create');
 
         if ($validator->fails()) {
-            return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+            // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
         }
 
         try {
@@ -130,8 +131,8 @@ class Vehicle extends Model
                 'expiration_date'       => $request->expiration_date,
                 
             ]);
-
-            return $this->respond(200, $vehicle, null, 'Vehiculo creado exitosamente');
+            return redirect()->back()->with('create','Vehiculo creado con exito',$vehicle);
+            // return $this->respond(200, $vehicle, null, 'Vehiculo creado exitosamente');
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al crear Vehiculo');
         }
@@ -143,7 +144,8 @@ class Vehicle extends Model
             $validator = $this->validateVehicle($request);
 
             if ($validator->fails()) {
-                return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
+                return redirect()->back()->withInput()->withErrors($validator->errors());
+                // return $this->respond(500,  $validator->errors(), 'validation error', $validator->errors()->first());
             }
 
             $vehicle = $this::find($id);
@@ -166,8 +168,8 @@ class Vehicle extends Model
                 'expiration_date'       => $request->expiration_date    ?? $vehicle->expiration_date,
                
             ]);
-
-            return $this->respond(200, $vehicle, null, 'Datos del vehiculo actualizados exitosamente');
+                return redirect()->back()->with('update', 'Vehiculo actualizado con exito');
+            // return $this->respond(200, $vehicle, null, 'Datos del vehiculo actualizados exitosamente');
         } catch (\Exception $e) {
             return $this->respond(500, [], $e->getMessage(), 'Error al actualizar datos del vehiculo');
         }

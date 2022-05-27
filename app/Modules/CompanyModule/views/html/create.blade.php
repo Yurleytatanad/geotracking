@@ -69,9 +69,14 @@
                                     @endif
                                 </div>
                                 <div class=" col-md-6 col-sm-12">
-                                    <label class="form-control-label">Logo *</label>
-                                    <input type="file" name="logo" class="form-control-file" value="{{ old('logo') }}"
+                                    <label class="form-control-label" for="input-logo">Logo *</label>
+                                    <input type="file" name="logo" id="input-logo" class="form-control-file" value="{{ old('logo') }}"
                                         required>
+                                        @if ($errors->has('logo'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('logo') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
                                     <label class="form-control-label" for="input-mail">Correo Electronico *</label>
