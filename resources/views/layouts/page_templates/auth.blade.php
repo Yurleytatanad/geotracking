@@ -2,24 +2,10 @@
     {{-- @include('layouts.sidebar') --}}
     <div class="main-panel">
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background:white; box-shadow: 0px 0px 5px 1px black;margin-top:-10px">
                 <div class="navbar-wrapper">
                    
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                           <li class="breadcrumb-item Active"><a href="/home">Inicio</a></li>
-                           @foreach (explode(".",request()->route()->getName()) as $item)
-                              @if ($item!="index")
-                                 @if($item == "users")
-                                    <li class="breadcrumb-item active" {aria-current="page"}>  <a href="{{request()->segment(1)==$item?'/'.request()->segment(1):'#'}}">{{__("usuarios")}}</a> </li>
-                                 @else
-                                    <li class="breadcrumb-item active" {aria-current="page"}>  <a href="{{request()->segment(1)==$item?'/'.request()->segment(1):'#'}}">{{__("$item")}}</a> </li>
-                                 @endif
-                              @endif
-                           @endforeach
-    
-                        </ol>
-                     </nav>
+                <img id="logocar" src="/img/logocar.jpg" style="width:13em; height:85px; margin-left:12em">
                 </div>
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
@@ -31,16 +17,16 @@
                                             {{ URL::asset('/paper/img/logo_geotracking.jpg')}}" alt="" width="120"></a>
                                 </li>  --}}
                                 <li class=" nav-item dropdown no-arrow">
-                                        <a class="nav-link" href="{{ route('mapa.index') }}">Mapa </a>
+                                        <a class="nav-link" href="{{ route('mapa.index') }}" style="color:black">Mapa </a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('driver.index') }}">Conductores </a>
+                                    <a class="nav-link" href="{{ route('driver.index') }}" style="color:black">Conductores </a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('company.index') }}">Empresas </a>
+                                    <a class="nav-link" href="{{ route('company.index') }}" style="color:black">Empresas </a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('vehicle.index') }}">Vehiculos </a>
+                                    <a class="nav-link" href="{{ route('vehicle.index') }}" style="color:black">Vehículos </a>
                                 </li>
                                 <!-- Top bar divider -->
                                 <div class="topbar-divider d-none d-sm-block"></div>

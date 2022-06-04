@@ -1,3 +1,6 @@
+<head>
+    <title>Crear empresa</title>
+</head>
 @extends('layouts.app', [
     'class' => '',
     'elementActive' => '',
@@ -37,7 +40,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label" for="input-address">Direccion *</label>
+                                    <label class="form-control-label" for="input-address">Dirección *</label>
                                     <input type="text" name="address" id="input-address" class="form-control"
                                         style=" border-radius: 50px" value="{{ old('address') }}" required>
                                     @if ($errors->has('address'))
@@ -79,7 +82,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label" for="input-mail">Correo Electronico *</label>
+                                    <label class="form-control-label" for="input-mail">Correo Electrónico *</label>
                                     <input type="email" name="mail" id="input-mail" class="form-control"
                                         style=" border-radius: 50px" value="{{ old('mail') }}" required>
                                     @if ($errors->has('mail'))

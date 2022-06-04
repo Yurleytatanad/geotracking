@@ -56,12 +56,10 @@ class VehicleController extends Controller
     }
 
 
-    public function show(Request $request)
+    public function show($id)
     {
-        // $consulta = trim($request->get('buscar'));
-        // $value = request()->get('buscar');
-        // $respuesta= Vehicle::WhereModel($value)->get();
-        // return view($this->path . 'show', ['data' => $respuesta, 'buscar' => $consulta]);
+        $vehicle = Vehicle::find($id);
+        return view($this->path . 'show')->with('vehicle', $vehicle);
     }
 
 
