@@ -54,12 +54,10 @@ class CompanyController extends Controller
     }
 
 
-    public function show(Request $request)
+    public function show($id)
     {
-        // $consulta = trim($request->get('buscar'));
-        // $value = request()->get('buscar');
-        // $respuesta= Company::WhereName($value)->get();
-        // return view($this->path . 'show', ['data' => $respuesta, 'buscar' => $consulta]);
+        $company = Company::find($id);
+        return view($this->path . 'show')->with('company', $company);
 
     }
 

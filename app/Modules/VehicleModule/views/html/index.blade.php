@@ -1,9 +1,13 @@
+<head>
+    <title>Vehículos</title>
+</head>
 @extends('layouts.app', [
     'class' => '',
     'elementActive' => '',
 ])
 
 @section('content')
+
     <div class="content">
         <div class="row">
             <div class="col-md-12">
@@ -11,7 +15,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-md-9">
-                                <h5 class="card-title">Vehiculos</h5>
+                                <h5 class="card-title">Vehículos</h5>
                             </div>
                             <div class="col-md-3 text-right">
                                 <a href="{{ route('vehicle.create') }}" class="btn btn-primary">Crear Vehiculo</a>
@@ -112,17 +116,27 @@
                                                 <td>{{ $vehicle->no_tech_mechanic }}</td>
                                                 <td>{{ $vehicle->no_soat }}</td>
                                                 <td>
-                                                    <a href="{{ route('vehicle.edit', $vehicle->id) }}"
-                                                        class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
-                                                    </a>
-                                                    <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
-                                                        data-bs-toggle="modal" data-bs-id='{{ $vehicle->id }}'
-                                                        data-bs-target="#modal-delete">
-                                                    </a>
+                                                    <div class="table-botones">
+                                                        <a href="{{ route('vehicle.edit', $vehicle->id) }}"
+                                                            class='btn btn-success btn-sm nc-icon nc-ruler-pencil' title="Editar">
+                                                        </a>
 
-                                                    {{-- <a href="{{ route('vehicle.destroy', $vehicle->id) }}"
-                                            class='eliminar btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
+                                                        <a type="button" class="bi bi-eye" title="Ver" href= "{{ route('vehicle.show', $vehicle->id)}}" title="Ver" style="color:#ffffff; background:blue; padding:5px 15px; font:14px nucleo-icons; border-radius:3px">
+                                                            <svg width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16" >
+                                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                            </svg>
+                                                        </a>
+                                                        <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
+                                                            data-bs-toggle="modal" data-bs-id='{{ $vehicle->id }}'
+                                                            data-bs-target="#modal-delete" title="Eliminar">
+                                                        </a>
+
+                                                        {{-- <a href="{{ route('vehicle.destroy', $vehicle->id) }}"
+                                                        class='eliminar btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
+                                                    </div>
                                                 </td>
+                                               
                                             </tr>
                                         @endforeach
                                     @else

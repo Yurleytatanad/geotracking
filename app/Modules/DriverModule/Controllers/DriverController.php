@@ -47,14 +47,11 @@ class DriverController extends Controller
     }
 
 
-    public function show(Request $request)
+    public function show($id)
     {
-        // $consulta = trim($request->get('buscar'));
-        // $value = request()->get('buscar');
-        // $respuesta = Driver::WhereName($value)->get();
-        // return view($this->path . 'show', ['data' => $respuesta, 'buscar' => $consulta]);
+        $driver = Driver::find($id);
+        return view($this->path . 'show')->with('driver', $driver);
     }
-
 
     public function edit(Driver $driver)
     {

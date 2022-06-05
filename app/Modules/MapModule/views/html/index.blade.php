@@ -1,3 +1,8 @@
+<head>
+    <title>
+        Mapa
+    </title>
+</head>
 @extends('layouts.app', [
 'class' => '',
 'elementActive' => 'map'
@@ -7,14 +12,14 @@
 
 
 <div class="content">
-    <div id="map" style="height:500px; width: 1300px;" class="my-3"></div>
+    <div id="map" style="height:500px; width: 1300px; background:white" class="my-3"></div>
 </div>
 
 @endsection
 
 @section('mapa')
 <!-- Sidebar - Brand -->
-<div style="height:475px;margin-top:105px;margin-left:50px " id="Barra" class="sidebar" data-color="white">
+<div style="height:475px;margin-top:105px;margin-left:50px;border-radius:10px;margin-top:8em;border:1px solid black" id="Barra" class="sidebar" data-color="white">
     <div class="sidebar-wrapper">
         <ul style="list-style:none;font-weight:bold;" class="nav-link">
             Rastreo
@@ -85,6 +90,6 @@
     
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHyoTYpZ-NrrG9FKJYebgtihFQg293c80&callback=initMap" type="text/javascript"></script>
 
 @endpush

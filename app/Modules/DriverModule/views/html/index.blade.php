@@ -1,3 +1,6 @@
+<head>
+    <title>Conductores</title>
+</head>
 @extends('layouts.app', [
     'class' => '',
     'elementActive' => '',
@@ -70,7 +73,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                    <div class="table-responsive">
                             @include('layouts.alerts')
                             <table class="table align-items-center text-center table-flush">
                                 <thead class="thead-light">
@@ -94,16 +97,24 @@
                                             <td>{{ $driver->address }}</td>
                                             <td>{{ $driver->pass_number }}</td>
                                             <td>
+                                                <div class="table-botones">
                                                 <a href="{{ route('driver.edit', $driver->id) }}"
-                                                    class='btn btn-success btn-sm nc-icon nc-ruler-pencil'>
+                                                    class='btn btn-success btn-sm nc-icon nc-ruler-pencil' title="Editar">
+                                                </a>
+                                                <a type="button" class="bi bi-eye" title="Ver" href= "{{ route('driver.show', $driver->id)}}" title="Ver" style="color:#ffffff; background:blue; padding:5px 15px; font:14px nucleo-icons; border-radius:3px">
+                                                    <svg width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                    </svg>
                                                 </a>
                                                 <a href="" class="btn btn-danger btn-sm nc-icon nc-simple-remove"
                                                     data-bs-toggle="modal" data-bs-id='{{ $driver->id }}'
-                                                    data-bs-target="#modal-delete">
+                                                    data-bs-target="#modal-delete"  title="Eliminar">
                                                 </a>
                                                 {{-- <a href="{{ route('driver.destroy', $driver->id) }}"
-                                            class='btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
+                                                class='btn btn-danger btn-sm nc-icon nc-simple-remove'></a> --}}
                                             </td>
+                                        </div>
                                         </tr>
                                     @endforeach 
                                     @else

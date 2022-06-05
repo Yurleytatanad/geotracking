@@ -37,7 +37,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label class="form-control-label" for="input-register_car">Matricula *</label>
+                                    <label class="form-control-label" for="input-register_car">Matrícula *</label>
                                     <input type="text" name="register_car" id="input-register_car"
                                         value="{{ old('register_car') }}" style=" border-radius: 50px"
                                         class="form-control" required>
