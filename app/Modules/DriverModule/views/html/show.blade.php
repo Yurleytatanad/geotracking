@@ -42,6 +42,7 @@
                                             <td>{{ $driver->last_name }}</td>
                                             <td>{{ $driver->phone }}</td>
                                             <td>{{ $driver->address }}</td>
+                                            <td>{{ $driver->pass_number }}</td>
                                             <td>{{ $driver->pass }}</td>
                                             <td>{{ $driver->driver_id }}</td>
                                             <td>{{ $driver->cur_vitae }}</td>
