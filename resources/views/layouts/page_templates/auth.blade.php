@@ -4,7 +4,6 @@
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid" style="background:white; box-shadow: 0px 0px 5px 1px black;margin-top:-10px">
                 <div class="navbar-wrapper">
-                   
                 <img id="logocar" src="/img/logocar.jpg" style="width:13em; height:85px; margin-left:12em">
                 </div>
                 <div id="content-wrapper" class="d-flex flex-column">
