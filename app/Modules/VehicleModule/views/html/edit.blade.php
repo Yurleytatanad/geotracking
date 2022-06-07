@@ -65,7 +65,8 @@
                                     <select name="external_id_driver" class="form-control" id="input-model"
                                         style=" border-radius: 50px">
                                         @foreach ($data as $driver)
-                                            <option value={{ $driver->id }}>{{ $driver->name }}</option>
+                                            <option {{ $vehicle->external_id_driver == $driver->id ? 'selected ' : '' }}
+                                                value={{ $driver->id }}>{{ $driver->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -108,7 +109,7 @@
                                     {{ $vehicle->doc_card_driver }}
                                     <input type="file" class="form-control-file" id="input-doc_card_driver"
                                         value="{{ $vehicle->doc_card_driver }}" name="doc_card_driver"
-                                        class="form-control" >
+                                        class="form-control">
                                     @if ($errors->has('doc_card_driver'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('doc_card_driver') }}</strong>
@@ -121,7 +122,7 @@
                                     {{ $vehicle->doc_tech_mechanic }}
                                     <input type="file" class="form-control-file" id="input-doc_tech_mechanic"
                                         value="{{ $vehicle->doc_tech_mechanic }}" name="doc_tech_mechanic"
-                                        class="form-control" >
+                                        class="form-control">
                                     @if ($errors->has('doc_tech_mechanic'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('doc_tech_mechanic') }}</strong>

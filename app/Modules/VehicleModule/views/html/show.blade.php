@@ -45,7 +45,8 @@
                                     <select name="external_id_driver" class="form-control" id="input-model"
                                         disabled="disabled" style=" border-radius: 50px">
                                         @foreach ($data as $driver)
-                                            <option value={{ $driver->id }}>{{ $driver->name }}</option>
+                                            <option {{ $vehicle->external_id_driver == $driver->id ? 'selected ' : '' }}
+                                                value={{ $driver->id }}>{{ $driver->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
