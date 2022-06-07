@@ -4,28 +4,32 @@
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid" style="background:white; box-shadow: 0px 0px 5px 1px black;margin-top:-10px">
                 <div class="navbar-wrapper">
-                <img id="logocar" src="/img/logocar.jpg" style="width:13em; height:85px; margin-left:12em">
+                    <img id="logocar" src="/img/logocar.jpg" style="width:13em; height:85px; margin-left:12em">
                 </div>
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <ul class="navbar-nav ml-auto">
-                                {{--  <li class="nav-item dropdown no-arrow">
+                                {{-- <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link" href="" style="margin-right:400px;"><img src="
                                             {{ URL::asset('/paper/img/logo_geotracking.jpg')}}" alt="" width="120"></a>
-                                </li>  --}}
+                                </li> --}}
                                 <li class=" nav-item dropdown no-arrow">
-                                        <a class="nav-link" href="{{ route('mapa.index') }}" style="color:black">Mapa </a>
+                                    <a class="nav-link" href="{{ route('mapa.index') }}"
+                                        style="color:black"><strong>Mapa</strong></a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('driver.index') }}" style="color:black">Conductores </a>
+                                    <a class="nav-link" href="{{ route('driver.index') }}"
+                                        style="color:black"><strong>Conductores</strong></a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('company.index') }}" style="color:black">Empresas </a>
+                                    <a class="nav-link" href="{{ route('company.index') }}"
+                                        style="color:black"><strong>Empresas</strong></a>
                                 </li>
                                 <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="{{ route('vehicle.index') }}" style="color:black">Vehículos </a>
+                                    <a class="nav-link" href="{{ route('vehicle.index') }}"
+                                        style="color:black"><strong>Vehiculos</strong></a>
                                 </li>
                                 <!-- Top bar divider -->
                                 <div class="topbar-divider d-none d-sm-block"></div>
@@ -46,8 +50,6 @@
                                         </form>
                                         <div class="dropdown-menu dropdown-menu-right"
                                             aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item"
-                                                href="{{ route('perfil.edit') }}">{{ __('Mi perfil') }}</a>
                                             <a class="dropdown-item" onclick="logout()">{{ __('Cerrar sesion') }}</a>
                                         </div>
                                     </div>

@@ -31,8 +31,9 @@
                             </td>
                         </tr>
                     </table>
+                @endforeach
             </ul>
-            @endforeach
+
         </div>
         <hr class="sidebar-divider my-0">
 
