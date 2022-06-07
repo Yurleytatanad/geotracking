@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table">
                             @include('layouts.alerts')
                             <table class="table align-items-center text-center table-flush">
                                 <thead class="thead-light">
