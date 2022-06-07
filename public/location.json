@@ -1,29 +1,15 @@
 [
     {
-        "c_digo_regi_n": "01",
-        "nombre_regi_n": "Atlantico",
-        "c_digo_municipio": "0001",
-        "nombre_municipio": "Barranquilla",
+        "nombre": "PUNTO 1",
         "punto": {
-            "type": "Point",
-            "coordinates": [
-                -74.7889,
-                10.9878
-            ]
+            "coordinates": [ -74.79071,10.93557]
         }
     },
     
     {
-        "c_digo_regi_n": "02",
-        "nombre_regi_n": "Atlantico",
-        "c_digo_municipio": "0002",
-        "nombre_municipio": "Soledad",
+        "nombre": "PUNTO 2",
         "punto": {
-            "type": "Point",
-            "coordinates": [
-                -74.781992,
-                10.915404  
-            ]
+            "coordinates": [-74.789946, 10.936442 ]
         }
     }
     

@@ -9,10 +9,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Editar Empresa</h5>
+                        <h5 class="card-title">
+                            <strong>Editar Empresa</strong>
+                        </h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('company.update', $company->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('company.update', $company->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @include('layouts.alerts')
@@ -72,8 +75,8 @@
                                 <div class=" col-md-6 col-sm-12">
                                     <label class="form-control-label">Logo *</label><br>
                                     {{ $company->logo }}
-                                    <input type="file" name="logo" class="form-control-file" value="{{ $company->logo }}"
-                                        required>
+                                    <input type="file" name="logo" class="form-control-file"
+                                        value="{{ $company->logo }}">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
                                     <label class="form-control-label" for="input-mail">Correo Electronico *</label>

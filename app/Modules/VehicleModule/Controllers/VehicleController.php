@@ -59,14 +59,16 @@ class VehicleController extends Controller
     public function show($id)
     {
         $vehicle = Vehicle::find($id);
-        return view($this->path . 'show')->with('vehicle', $vehicle);
+        $respuesta = Driver::all();
+        return view($this->path . 'show', compact('vehicle'))->with('data', $respuesta, $respuesta);
     }
 
 
     public function edit(Vehicle $vehicle)
     {
         $respuesta = Driver::all();
-        return view($this->path . 'edit', compact('vehicle'))->with('data', $respuesta);
+        $respuesta2 = Vehicle::all();
+        return view($this->path . 'edit', compact('vehicle'))->with('data', $respuesta, $respuesta2);
     }
 
 

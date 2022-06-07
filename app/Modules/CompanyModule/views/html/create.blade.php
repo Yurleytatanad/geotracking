@@ -12,7 +12,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Crear Empresa</h5>
+                        <h5 class="card-title">
+                            <strong>Crear nueva Empresa</strong>
+                        </h5>
                     </div>
                     <div class="card-body">
                         @include('layouts.alerts')

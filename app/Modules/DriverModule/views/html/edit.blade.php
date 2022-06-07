@@ -9,7 +9,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Editar Conductor</h5>
+                        <h5 class="card-title">
+                            <strong>Ediatar Conductor</strong>
+                        </h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('driver.update', $driver->id) }}" method="POST" enctype="multipart/form-data">
