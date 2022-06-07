@@ -16,14 +16,13 @@
 
 @section('mapa')
     <!-- Sidebar - Brand -->
-    <div class="sidebar" style="height:475px;margin-top:105px;margin-left:50px;;margin-top:8em;" id="Barra"
-        data-color="white">
+    <div class="sidebar" style="height:475px;margin-top:105px;margin-left:50px;;margin-top:7,5em;" data-color="white">
         <div class="sidebar-wrapper" style="">
             <ul style="list-style:none;font-weight:bold;" class="nav-link">
-                Rastreo
+                <span>Rastreo</span>
                 <hr class="sidebar-divider">
                 @foreach ($data as $driver)
-                    <table class="card" style="height: 15%;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <table class="card" style="height: 14%;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                         <tr>
                             <td style="list-style:none;font-weight:bold;" class="nav-item active">
                                 <a class="nav-link" href="index.html">
@@ -33,10 +32,7 @@
                     </table>
                 @endforeach
             </ul>
-
         </div>
-        <hr class="sidebar-divider my-0">
-
     </div>
 @endsection
 
