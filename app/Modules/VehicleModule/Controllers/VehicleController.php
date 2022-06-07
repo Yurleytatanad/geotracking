@@ -32,7 +32,7 @@ class VehicleController extends Controller
         ->vehicle_id($placa)
         ->no_tech_mechanic($tecnomecanica)
         ->no_soat($soat)
-        ->paginate(5);
+        ->paginate(10);
 
         $respuesta['drivers']  = Driver::all(); 
         return view($this->path . 'index', $respuesta)->with('vehicles' , $vehicles);
