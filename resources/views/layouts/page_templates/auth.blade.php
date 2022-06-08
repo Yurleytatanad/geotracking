@@ -63,10 +63,7 @@
         </nav>
         @yield('mapa')
         @yield('content')
-
     </div>
-
-
 </div>
 @include('layouts.footer')
 @push('scripts')

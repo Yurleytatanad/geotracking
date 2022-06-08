@@ -11,9 +11,9 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-md-9">
-                                <input type="search" class="form-control"
-                                    style="border-radius: 10px; width: 1050px; height: 45px; background: #EAEAEA"
-                                    placeholder="Buscar...">
+                                <h5 class="card-title">
+                                    <strong>Empresas</strong>
+                                </h5>
                             </div>
                             <div class="col-md-3 text-right">
                                 <button class="btn btn-danger btn-filter" style="background: rgb(250, 221, 221);">Filtar<i
