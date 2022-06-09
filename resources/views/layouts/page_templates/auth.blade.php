@@ -3,6 +3,23 @@
     <div class="main-panel">
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid" style="background:white; box-shadow: 0px 0px 5px 1px black;margin-top:-10px">
+                {{--  <div class="navbar-wrapper">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                           <li class="breadcrumb-item Active"><a href="{{ route('mapa.index') }}">Inicio</a></li>
+                           @foreach (explode(".",request()->route()->getName()) as $item)
+                              @if ($item!="index")
+                                 @if($item == "users")
+                                    <li class="breadcrumb-item active" {aria-current="page"}>  <a href="{{request()->segment(1)==$item?'/'.request()->segment(1):'#'}}">{{__("usuarios")}}</a> </li>
+                                 @else
+                                    <li class="breadcrumb-item active" {aria-current="page"}>  <a href="{{request()->segment(1)==$item?'/'.request()->segment(1):'#'}}">{{__("$item")}}</a> </li>
+                                 @endif
+                              @endif
+                           @endforeach
+
+                        </ol>
+                     </nav>
+                </div>  --}}
                 <div class="navbar-wrapper">
                     <img id="logocar" src="/img/logocar.jpg" style="width:13em; height:85px; margin-left:12em">
                 </div>
@@ -11,10 +28,6 @@
                     <div id="content">
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <ul class="navbar-nav ml-auto">
-                                {{-- <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link" href="" style="margin-right:400px;"><img src="
-                                            {{ URL::asset('/paper/img/logo_geotracking.jpg')}}" alt="" width="120"></a>
-                                </li> --}}
                                 <li class=" nav-item dropdown no-arrow">
                                     <a class="nav-link" href="{{ route('mapa.index') }}"
                                         style="color:black"><strong>Mapa</strong></a>
