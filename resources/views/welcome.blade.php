@@ -31,3 +31,8 @@
     });
 </script>
 @endpush
+@section('content')
+    <div class="content">
+        <div id="map" style="height:500px; width: 1300px; background:white" class="my-3"></div>
+    </div>
+@endsection

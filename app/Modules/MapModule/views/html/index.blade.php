@@ -16,7 +16,7 @@
 
 @section('mapa')
     <!-- Sidebar - Brand -->
-    <div class="sidebar" style="height:475px;margin-top:105px;margin-left:50px;;margin-top:7,5em;" data-color="white">
+    <div class="sidebar" style="height:475px;margin-top:105px;margin-left:50px;margin-top:10em;" data-color="white">
         <div class="sidebar-wrapper" style="">
             <ul style="list-style:none;font-weight:bold;" class="nav-link">
                 <span>Rastreo</span>
@@ -70,7 +70,7 @@
 
         const dibujarMapa = (obj, locationsInfo) => {
             let map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 18,
+                zoom: 10,
                 center: obj
             })
 
